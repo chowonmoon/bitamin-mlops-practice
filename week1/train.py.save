@@ -1,6 +1,6 @@
 import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split
+
+from sklearn.ensemble import
 from sklearn.preprocessing import LabelEncoder
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
@@ -16,7 +16,7 @@ for col in ["Geography", "Gender"]:
     le = LabelEncoder()
     df[col] = le.fit_transform(df[col])
 
-# 4. 입력(X)과 타깃(y) 분리
+# 4. 입력(X)과 타깃
 X = df.drop(columns=["Exited"])
 y = df["Exited"]
 
@@ -33,10 +33,3 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 acc = accuracy_score(y_test, y_pred)
 print(f"Accuracy: {acc:.4f}")
-
-rf_model = RandomForestClassifier(random_state=42)
-rf_model.fit(X_train, y_train)
-rf_pred = rf_model.predict(X_test)
-rf_acc = accuracy_score(y_test, rf_pred)
-print(f"Random Forest Accuracy: {rf_acc:.4f}")
-
