@@ -6,6 +6,7 @@ from sklearn.metrics import accuracy_score
 
 # 1. 데이터 로드
 df = pd.read_csv("Churn_Modelling.csv")
+df = df.dropna()  # 결측치 제거 (전처리 강화)
 
 # 2. 학습에 쓰지 않을 컬럼 제거
 df = df.drop(columns=["RowNumber", "CustomerId", "Surname"])
