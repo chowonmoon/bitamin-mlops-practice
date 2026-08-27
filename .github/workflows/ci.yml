@@ -1,0 +1,29 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 코드 체크아웃
+        uses: actions/checkout@v4
+
+      - name: 파이썬 설치
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: 패키지 설치
+        run: |
+          cd week5
+          pip install -r requirements.txt
+          pip install pytest httpx
+
+      - name: 테스트 실행
+        run: |
+          cd week5
+          pytest test_main.py -v
